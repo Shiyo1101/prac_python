@@ -32,7 +32,7 @@ def main():
         # 顔を検出する
         # detectMultiScaleは画像内の顔を検出し、矩形領域（x, y, w, h）を返す
         # 引数: スケールファクター(1.1)、最小近傍矩形数(4)
-        faces = face_cascade.detectMultiScale(gray, 1.1, 8)
+        faces = face_cascade.detectMultiScale(gray, 1.1, 4)
 
         # 検出された顔ごとに処理を行う
         for x, y, w, h in faces:
