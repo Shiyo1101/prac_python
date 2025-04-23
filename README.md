@@ -6,9 +6,8 @@
 
 このプロジェクトを実行するには、以下のソフトウェアが必要です:
 
-- Python 3.8 以上
-- pip（Python パッケージ管理ツール）
-- Git
+- [uv（Python パッケージ管理ツール）](https://docs.astral.sh/uv/guides/install-python/)
+- [Git](https://git-scm.com/)
 
 ## セットアップ手順
 
@@ -19,7 +18,7 @@
 まず、Git を使用してこのリポジトリをローカル環境にクローンします。
 
 ```bash
-git clone https://github.com/your-username/your-repository.git
+git clone https://github.com/Shiyo1101/practice_python.git
 ```
 
 ### 2. プロジェクトディレクトリに移動する
@@ -27,40 +26,32 @@ git clone https://github.com/your-username/your-repository.git
 クローンしたリポジトリのディレクトリに移動します。
 
 ```bash
-cd prac-python
+cd practice-python
 ```
 
-### 3. 必要なパケージをインストールする
+### 3. 必要なパケージを同期する
 
 ```bash
 uv sync
 ```
 
-仮想環境を有効化します。
+### 4. 仮想環境に入る
 
 - macOS/Linux:
 
   ```bash
-  source venv/bin/activate
+  . venv/bin/activate
   ```
 
 - Windows:
 
   ```bash
-  venv\Scripts\activate
+  .venv\Scripts\activate
   ```
-
-### 4. 仮想環境に入る
-
-プロジェクトで必要な Python パッケージをインストールします。
-
-```bash
-pip install -r requirements.txt
-```
 
 ### 5. モジュール検索パスを設定する
 
-プロジェクトルートにある `common` パッケージを使用するために、`PYTHONPATH` を設定します。
+プロジェクトルートにある `common` パッケージなどを使用するために、`PYTHONPATH` を設定します。
 
 - macOS/Linux:
 
@@ -79,27 +70,98 @@ pip install -r requirements.txt
 以下のコマンドでスクリプトを実行し、ニューラルネットワークの学習を開始します。
 
 ```bash
-python chapters/neural-network/basic-xor-nn.py
+uv run main.py
 ```
 
 ## プロジェクトの構成
 
 ```
-your-repository/
+practice-python/
 ├── chapters/
-│   └── neural-network/
-│       └── basic-xor-nn.py  # XOR 問題を解くニューラルネットワークの実装
+│   └── neural-network/      # ニューラルネットワークの勉強
+│       └── basic-xor-nn.py
+│   └── numpy/               # numpyの勉強
+│   └── opencv/              # opencvの勉強
 ├── common/
 │   └── functions.py         # シグモイド関数などの共通関数
-├── requirements.txt         # 必要な Python パッケージ
-└── README.md                # このファイル
+├── images/                  # mnistデータセット
+├── images/                  # 画像
+├── models/                  # 作成したモデル
 ```
 
-## 注意事項
+## （おまけ）uv の基本コマンド説明
 
-- 学習の進捗はコンソールに出力されます。
-- 学習後の結果はスクリプトの最後に表示されます。
+`uv` は Python プロジェクトの依存関係管理やスクリプト実行を簡単にするツールです。以下に、よく使われる基本コマンドを説明します。
+詳細な説明は[こちら](https://zenn.dev/turing_motors/articles/594fbef42a36ee)から
 
-## ライセンス
+### 1. `uv sync`
 
-このプロジェクトは MIT ライセンスの下で公開されています。詳細は [LICENSE](LICENSE) ファイルをご覧ください。
+プロジェクトの依存関係をインストールまたは更新します。`requirements.txt` や `pyproject.toml` に基づいて必要なパッケージをインストールします。
+
+```bash
+uv sync
+```
+
+### 2. `uv run <script>`
+
+指定した Python スクリプトを実行します。仮想環境が自動的に有効化され、`PYTHONPATH` も適切に設定されます。
+
+```bash
+uv run main.py
+```
+
+### 3. `uv add <package>`
+
+プロジェクトにパッケージの追加を行うことができます。
+
+```bash
+uv add numpy
+```
+
+バージョンを指定することも可能です
+
+```bash
+uv add "numpy==1.26.4"
+```
+
+### 4. `uv remove <package>`
+
+プロジェクトからパッケージを取り除くことができます。
+
+```bash
+uv remove numpy
+```
+
+### 5. `uv venv`
+
+仮想環境を作成します。`uv` はプロジェクトごとに仮想環境を管理します。
+
+```bash
+uv venv
+```
+
+### 6. `uv which`
+
+仮想環境内の Python 実行ファイルのパスを表示します。
+
+```bash
+uv which python
+```
+
+### 7. `uv clean`
+
+仮想環境やキャッシュを削除して、プロジェクトをクリーンな状態に戻します。
+
+```bash
+uv clean
+```
+
+### 8. `uv doctor`
+
+プロジェクトの設定や依存関係に問題がないかを診断します。
+
+```bash
+uv doctor
+```
+
+これらのコマンドを活用することで、`uv` を使った効率的なプロジェクト管理が可能になります。
