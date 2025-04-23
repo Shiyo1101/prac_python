@@ -2,10 +2,7 @@
 
 import numpy as np
 
-
-# 活性化関数（シグモイド）
-def sigmoid(x):
-    return 1 / (1 + np.exp(-x))
+from common.functions import sigmoid
 
 
 # シグモイド関数の微分

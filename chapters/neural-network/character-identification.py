@@ -38,7 +38,7 @@ def softmax(x):
 
 def main():
     # 2. MNISTデータセットの読み込み
-    mnist_data = np.load("datasets/mnist.npz")
+    mnist_data = np.load("dataset/mnist.npz")
 
     print(mnist_data.files)  # ['x_train', 'y_train', 'x_test', 'y_test']
     x_train = mnist_data["x_train"]  # トレーニングデータ
