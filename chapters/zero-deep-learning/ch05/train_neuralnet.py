@@ -1,8 +1,4 @@
 # coding: utf-8
-import os
-import sys
-
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 import numpy as np
 from two_layer_net import TwoLayerNet

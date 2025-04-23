@@ -1,8 +1,5 @@
 # coding: utf-8
-import os
-import sys
 
-sys.path.append(os.pardir)  # 親ディレクトリのファイルをインポートするための設定
 from collections import OrderedDict
 
 import numpy as np

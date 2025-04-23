@@ -61,9 +61,15 @@ uv sync
   export PYTHONPATH=$(pwd):$PYTHONPATH
   ```
 
-- Windows:
+- Windows (PowerShell):
 
-  ```bash
+  ```powershell
+  $env:PYTHONPATH="$PWD;$env:PYTHONPATH"
+  ```
+
+- Windows (コマンドプロンプト):
+
+  ```cmd
   set PYTHONPATH=%cd%;%PYTHONPATH%
   ```
 

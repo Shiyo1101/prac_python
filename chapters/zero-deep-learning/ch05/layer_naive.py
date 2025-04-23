@@ -1,6 +1,4 @@
 # coding: utf-8
-
-
 class MulLayer:
     def __init__(self):
         self.x = None
@@ -8,7 +6,7 @@ class MulLayer:
 
     def forward(self, x, y):
         self.x = x
-        self.y = y                
+        self.y = y
         out = x * y
 
         return out
