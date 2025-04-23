@@ -24,7 +24,7 @@ git clone https://github.com/Shiyo1101/practice_python.git
 クローンしたリポジトリのディレクトリに移動します。
 
 ```bash
-cd practice-python
+cd practice_python
 ```
 
 ### 3. 必要なパケージを同期する
@@ -38,7 +38,7 @@ uv sync
 - macOS/Linux:
 
   ```bash
-  . venv/bin/activate
+  . .venv/bin/activate
   ```
 
 - Windows:
