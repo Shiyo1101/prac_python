@@ -35,7 +35,7 @@ weights_hidden_output = np.random.uniform(-1, 1, (2, 1))
 learning_rate = 0.1
 
 # エポック数（学習の繰り返し回数）
-epochs = 100000
+epochs = 10000
 
 # 学習ループ
 for epoch in range(epochs):
