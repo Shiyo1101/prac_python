@@ -7,6 +7,10 @@
 - [uv（Python パッケージ管理ツール）](https://docs.astral.sh/uv/guides/install-python/)
 - [Git](https://git-scm.com/)
 
+## 注意事項
+
+windows の場合、WSL 環境での実行を推奨します。
+
 ## セットアップ手順
 
 以下の手順にしたがって、このプロジェクトをセットアップしてください。
@@ -161,5 +165,3 @@ uv clean
 ```bash
 uv doctor
 ```
-
-これらのコマンドを活用することで、`uv` を使った効率的なプロジェクト管理が可能になります。
