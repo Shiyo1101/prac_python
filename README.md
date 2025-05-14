@@ -73,9 +73,7 @@ uv sync
   set PYTHONPATH=%cd%;%PYTHONPATH%
   ```
 
-### 6. スクリプトを実行する
-
-以下のコマンドでスクリプトを実行し、ニューラルネットワークの学習を開始します。
+### 6. python ファイルを実行する
 
 ```bash
 uv run main.py
