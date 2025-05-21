@@ -31,7 +31,7 @@ git clone https://github.com/Shiyo1101/practice_python.git
 cd practice_python
 ```
 
-### 3. 必要なパケージを同期する
+### 3. 必要なパケージを同期（インストール）する
 
 ```bash
 uv sync
@@ -90,7 +90,7 @@ practice-python/
 │   └── opencv/              # opencvの勉強
 ├── common/
 │   └── functions.py         # シグモイド関数などの共通関数
-├── images/                  # mnistデータセット
+├── dataset/                 # データセット
 ├── images/                  # 画像
 ├── models/                  # 作成したモデル
 ```
