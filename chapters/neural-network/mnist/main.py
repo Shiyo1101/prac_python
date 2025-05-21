@@ -1,5 +1,6 @@
 import numpy as np
 from keras.api import layers, models
+from keras.api.callbacks import ReduceLROnPlateau
 
 
 def main():
@@ -40,6 +41,7 @@ def main():
     model.add(layers.MaxPooling2D((2, 2)))
     model.add(layers.Conv2D(64, (3, 3), padding="same", activation="relu"))
     model.add(layers.Flatten())
+    model.add(layers.Dropout(0.5))  # ドロップアウト層
     model.add(layers.Dense(64, activation="relu"))
     model.add(layers.Dense(10, activation="softmax"))
 
@@ -53,6 +55,11 @@ def main():
         metrics=["accuracy"],
     )
 
+    # コールバック関数の設定
+    lr_reducer = ReduceLROnPlateau(
+        monitor="val_loss", factor=0.5, patience=5, min_lr=1e-5, verbose=1
+    )
+
     # モデルの訓練
     model.fit(
         train_images,
@@ -60,6 +67,7 @@ def main():
         epochs=100,
         batch_size=64,
         validation_data=(val_images, val_labels),
+        callbacks=[lr_reducer],  # コールバック追加
     )
 
     # モデルの保存
@@ -69,8 +77,6 @@ def main():
     loss, accuracy = model.evaluate(val_images, val_labels)
     print(f"Validation Accuracy: {accuracy:.2f}")
     print(f"Validation Loss: {loss:.2f}")
-
-    return 0
 
 
 if __name__ == "__main__":
