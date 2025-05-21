@@ -26,7 +26,7 @@ def main():
     print("test_labels.shape", test_labels.shape)
 
     # モデルの読み込み
-    model = models.load_model("models/mnist_model.keras")
+    model = models.load_model("models/mnist_model_ep50.keras")
 
     # モデルの評価
     loss, accuracy = model.evaluate(test_images, test_labels)

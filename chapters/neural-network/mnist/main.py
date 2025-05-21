@@ -37,6 +37,7 @@ def main():
     model.add(layers.Input(shape=(28, 28, 1)))
     model.add(layers.Conv2D(32, (3, 3), padding="same", activation="relu"))
     model.add(layers.MaxPooling2D((2, 2)))
+    model.add(layers.Dropout(0.2))  # 畳み込み層後に小さめのドロップアウト
     model.add(layers.Conv2D(64, (3, 3), padding="same", activation="relu"))
     model.add(layers.MaxPooling2D((2, 2)))
     model.add(layers.Conv2D(64, (3, 3), padding="same", activation="relu"))
@@ -64,7 +65,7 @@ def main():
     model.fit(
         train_images,
         train_labels,
-        epochs=100,
+        epochs=50,
         batch_size=64,
         validation_data=(val_images, val_labels),
         callbacks=[lr_reducer],  # コールバック追加
