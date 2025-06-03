@@ -26,7 +26,7 @@ def main():
     print("test_labels.shape", test_labels.shape)
 
     # モデルの読み込み
-    model = models.load_model("models/mnist_model_ep50.keras")
+    model = models.load_model("models/mnist_model.keras")
 
     # モデルの評価
     loss, accuracy = model.evaluate(test_images, test_labels)
@@ -45,7 +45,7 @@ def main():
             f"Image {i}: Predicted class: {predicted_classes[i]}, True class: {test_labels[i]}"
         )
 
-    # 予測結果の可視化
+    # 予測結果の可視化と保存
     plt.figure(figsize=(10, 10))
     for i in range(10):
         plt.subplot(5, 5, i + 1)
@@ -53,7 +53,8 @@ def main():
         plt.title(f"Pred: {predicted_classes[i]}\nTrue: {test_labels[i]}")
         plt.axis("off")
     plt.tight_layout()
-    plt.show()
+    plt.savefig("models/mnist_prediction_samples.png")  # 画像として保存
+    plt.close()
 
     # モデルのアーキテクチャを画像として保存
     utils.plot_model(
