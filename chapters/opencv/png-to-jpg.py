@@ -4,10 +4,10 @@ import matplotlib.pyplot as plt
 
 def main():
     # png to jpg
-    img = cv2.imread("images/test.png")
+    img = cv2.imread("images/opencv/test.png")
     cv2.imwrite("images/test.jpg", img)
 
-    jpgImg = cv2.imread("images/test.jpg")
+    jpgImg = cv2.imread("images/opencv/test.jpg")
     plt.imshow(jpgImg)
 
     plt.show()

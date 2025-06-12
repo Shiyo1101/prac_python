@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 
 def main():
     # 2枚の画像を読み込む
-    img1 = cv2.imread("images/ramen_man.jpg", 0)
-    img2 = cv2.imread("images/cheer_man.jpg", 0)
+    img1 = cv2.imread("images/opencv/ramen_man.jpg", 0)
+    img2 = cv2.imread("images/opencv/cheer_man.jpg", 0)
 
     # 特徴量量検出
     akaze = cv2.AKAZE_create()

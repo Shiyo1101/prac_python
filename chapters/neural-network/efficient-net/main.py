@@ -11,7 +11,7 @@ def main():
     print("\n◆Model:")
     print(f"{model.name}")
 
-    img_path = "images/cat.jpg"
+    img_path = "images/neural-network/cat.jpg"
     img = image.load_img(img_path, target_size=(480, 480))
     x = image.img_to_array(img)
     x = np.expand_dims(x, axis=0)

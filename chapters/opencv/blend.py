@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 
 def main():
     # 合成する画像を読み込む
-    img = cv2.imread("images/cheer_man.jpg")
-    logo = cv2.imread("images/test.png")
+    img = cv2.imread("images/opencv/cheer_man.jpg")
+    logo = cv2.imread("images/opencv/test.png")
 
     # 合成する画像のサイズを取得
     h, w, _ = img.shape

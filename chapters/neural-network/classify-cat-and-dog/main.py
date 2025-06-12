@@ -43,7 +43,7 @@ def main():
 
     # 6. モデルの予測
     # 予測のための画像を読み込む
-    image = cv2.imread("images/test-cat.jpg")
+    image = cv2.imread("images/neural-network/test-cat.jpg")
     image = cv2.resize(image, (128, 128))
     image = image / 255.0  # ピクセルを0〜1に正規化
     image = image.reshape(1, 128, 128, 3)  # バッチサイズを追加

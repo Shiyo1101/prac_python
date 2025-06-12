@@ -5,7 +5,7 @@ import numpy as np
 
 def main():
     # 画像の読み込み
-    img = cv2.imread("images/ramen_man.jpg")
+    img = cv2.imread("images/opencv/ramen_man.jpg")
 
     # 画像のグレースケール化
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)

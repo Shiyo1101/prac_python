@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 def main():
     # 画像の読み込み
-    img = cv2.imread("images/test.png")
+    img = cv2.imread("images/opencv/test.png")
 
     # 画像の反転
     img_inversion = cv2.flip(img, 0)  # 0: 垂直反転, 1: 水平反転, -1: 両方反転

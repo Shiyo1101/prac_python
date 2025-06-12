@@ -8,7 +8,7 @@ from keras.api.utils import img_to_array, load_img
 model = load_model("models/cats_and_dogs_model.keras")  # 学習済みモデルの読み込み
 
 # 画像のファイルパス（判別したい画像）
-img_path = "images/test-dog.jpeg"
+img_path = "images/neural-network/test-dog.jpeg"
 
 # モデルに合わせて画像をリサイズ
 img = load_img(img_path, target_size=(128, 128))  # 入力サイズにリサイズ

@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 def main():
     # 画像の読み込み
-    img = cv2.imread("images/test.png")
+    img = cv2.imread("images/opencv/test.png")
 
     # 画像の回転
     img_rotate = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)

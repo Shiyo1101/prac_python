@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 def main():
     # 画像の読み込み
-    ramen_mans = cv2.imread("images/ramen_mans.jpg")
+    ramen_mans = cv2.imread("images/opencv/ramen_mans.jpg")
 
     # RGB 変換
     img = cv2.cvtColor(ramen_mans, cv2.COLOR_BGR2RGB)
