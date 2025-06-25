@@ -14,4 +14,5 @@ dependencies = [
     "scikit-learn>=1.6.1",
     "scipy>=1.15.2",
     "tensorflow>=2.19.0",
+    "tensorflow-datasets>=4.9.9",
 ]
