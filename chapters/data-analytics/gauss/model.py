@@ -3,13 +3,17 @@ import os
 
 import matplotlib.pyplot as plt
 import numpy as np
+from keras.api.callbacks import ReduceLROnPlateau
 from keras.api.layers import Dense, Input
 from keras.api.metrics import RootMeanSquaredError
-from keras.api.models import Sequential
+from keras.api.models import Model
 from keras.api.optimizers import Adam
 
 # ラベルは、muとsigmaの2つ
 LABEL_COUNT = 2
+
+EPOCHS = 250
+BATCH_SIZE = 32
 
 
 def load_data(filepath):
@@ -32,20 +36,19 @@ def load_data(filepath):
 X_train, y_train = load_data("dataset/gauss/train_histogram.csv")
 X_val, y_val = load_data("dataset/gauss/val_histogram.csv")
 
-model = Sequential(
-    [
-        Input(shape=(X_train.shape[1],), name="input_layer"),
-        Dense(256, activation="relu", name="hidden_layer_1"),
-        Dense(64, activation="relu", name="hidden_layer_2"),
-        Dense(16, activation="relu", name="hidden_layer_3"),
-        Dense(
-            LABEL_COUNT, activation="linear", name="output_layer"
-        ),  # 回帰なので活性化関数はlinear
-    ]
-)
+input_layer = Input(shape=(X_train.shape[1],), name="input_layer")
+
+x = Dense(256, activation="relu", name="hidden_layer_1")(input_layer)
+x = Dense(64, activation="relu", name="hidden_layer_2")(x)
+x = Dense(16, activation="relu", name="hidden_layer_3")(x)
+x = Dense(4, activation="relu", name="hidden_layer_4")(x)
+output_layer = Dense(LABEL_COUNT, activation="linear", name="output_layer")(x)
+
+# モデルを定義
+model = Model(inputs=input_layer, outputs=output_layer, name="gauss_model")
 
 # モデルをコンパイル
-# 損失関数には一般的に使われる 'mean_squared_error' (MSE) を指定
+# 損失関数には一般的に使われる平均二乗誤差(mean squared error)を使用
 # 評価指標(metrics)としてRMSEを監視する
 model.compile(
     optimizer=Adam(),
@@ -56,14 +59,23 @@ model.compile(
 # モデルの概要を表示
 model.summary()
 
+reduce_lr = ReduceLROnPlateau(
+    monitor="val_loss",  # 監視対象
+    factor=0.5,  # 学習率を 1/2 に
+    patience=20,  # 10エポック改善が見られなければ実行
+    min_lr=1e-6,  # 下限の学習率
+    verbose=1,
+)
+
 # モデルを学習
 history = model.fit(
     X_train,
     y_train,
     validation_data=(X_val, y_val),
-    epochs=100,
-    batch_size=32,
+    epochs=EPOCHS,
+    batch_size=BATCH_SIZE,
     verbose=1,
+    callbacks=[reduce_lr],
 )
 
 # モデルの保存先ディレクトリが存在しない場合に作成
@@ -120,9 +132,8 @@ def plot_predictions(model, X, y_true):
     plt.ylabel("Predicted sigma")
     plt.grid()
 
-    # グラフを表示
-    plt.tight_layout()
-    plt.show()
+    # グラフを保存
+    plt.savefig("images/gauss/predictions_plot.png")
 
 
 # 訓練データに対する予測をプロット
