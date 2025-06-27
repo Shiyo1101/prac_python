@@ -133,7 +133,7 @@ def plot_predictions(model, X, y_true):
     plt.grid()
 
     # グラフを保存
-    plt.savefig("images/gauss/predictions_plot.png")
+    plt.savefig("images/data-analytics/gauss_predictions_plot.png")
 
 
 # 訓練データに対する予測をプロット
