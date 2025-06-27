@@ -34,7 +34,7 @@ def main():
     model.fit(train_ds, validation_data=val_ds, epochs=10)
 
     # 4. モデルの保存
-    model.save("models/cats_and_dogs_model.keras")
+    model.save("models/neural-network/cats_and_dogs_model.keras")
 
     # 5. モデルの評価
     loss, accuracy = model.evaluate(val_ds)
@@ -58,7 +58,7 @@ def main():
     # モデルのアーキテクチャを画像として保存
     tf.keras.utils.plot_model(
         model,
-        to_file="models/cats_and_dogs_model.png",
+        to_file="images/neural-network/cats_and_dogs_model.png",
         show_shapes=True,
         show_layer_names=True,
     )

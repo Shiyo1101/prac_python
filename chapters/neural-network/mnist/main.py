@@ -115,11 +115,11 @@ def main():
     plt.ylabel("Accuracy")
     plt.legend()
     plt.tight_layout()
-    plt.savefig("models/mnist_accuracy_curve.png")
+    plt.savefig("images/neural-network/mnist_accuracy_curve.png")
     plt.close()
 
     # モデルの保存
-    model.save("models/mnist_model.keras")
+    model.save("models/neural-network/mnist_model.keras")
 
     # モデルの評価
     loss, accuracy = model.evaluate(val_images, val_labels)
@@ -136,11 +136,11 @@ def main():
     # 0～9すべての正解ラベルごとに、予測分布の表を作成・保存
     df_count = pd.DataFrame(cm, columns=[f"pred_{i}" for i in range(10)])
     df_count.index = [f"true_{i}" for i in range(10)]
-    df_count.to_csv("models/mnist_confusion_count.csv")
+    df_count.to_csv("dataset/neural-network/mnist_confusion_count.csv")
 
     # 割合の表も作成・保存（各行で正規化）
     df_ratio = df_count.div(df_count.sum(axis=1), axis=0)
-    df_ratio.to_csv("models/mnist_confusion_ratio.csv")
+    df_ratio.to_csv("models/neural-network/mnist_confusion_ratio.csv")
 
 
 if __name__ == "__main__":

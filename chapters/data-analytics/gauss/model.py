@@ -82,7 +82,7 @@ history = model.fit(
 os.makedirs("models", exist_ok=True)
 
 # モデルを保存
-model.save("models/gauss_model.keras")
+model.save("models/data-analytics/gauss_model.keras")
 
 print("\nモデルの学習と保存が完了しました。")
 
