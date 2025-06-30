@@ -70,7 +70,7 @@ history = model.fit(
 )
 
 # モデルの保存
-model.save("dataset/beta/beta_model.keras")
+model.save("models/data-analytics/beta_model_v2.keras")
 
 
 # 学習曲線の保存
@@ -98,4 +98,4 @@ def save_learning_curve(history, filepath):
 
 
 # 学習曲線を保存
-save_learning_curve(history, "dataset/beta/learning_curve.png")
+save_learning_curve(history, "dataset/beta/learning_curve_v2.png")

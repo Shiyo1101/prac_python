@@ -9,11 +9,11 @@ from scipy import stats
 N = 1000000
 
 # 生成するヒストグラムの個数
-HISTOGRAM_COUNT = 1500
+HISTOGRAM_COUNT = 3000
 
 # alphaとbetaの範囲設定
-ALPHA_RANGE = (0.1, 5.0)
-BETA_RANGE = (0.1, 5.0)
+ALPHA_RANGE = (0.01, 1000.0)
+BETA_RANGE = (0.01, 1000.0)
 
 # ヒストグラムのBINS数
 HISTOGRAM_BINS = 1000
@@ -24,12 +24,6 @@ os.makedirs(output_dir, exist_ok=True)
 
 # 出力ファイルパス
 output_file = os.path.join(output_dir, "histogram.csv")
-
-# ファイルのヘッダーを書き込み
-with open(output_file, "w") as f:
-    f.write(
-        "alpha,beta," + ",".join([f"bin_{i}" for i in range(HISTOGRAM_BINS)]) + "\n"
-    )
 
 # ヒストグラムデータを生成してCSVに書き込み
 for i in range(HISTOGRAM_COUNT):
