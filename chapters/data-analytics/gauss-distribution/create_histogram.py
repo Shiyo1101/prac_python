@@ -2,7 +2,7 @@ import numpy as np
 from scipy import stats
 
 # 生成する乱数の個数（1M）
-N = 1000000
+N = 10000000
 
 # 平均と標準偏差の範囲設定
 MU_RANGE = (-5, 5)
