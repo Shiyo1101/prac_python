@@ -9,11 +9,11 @@ from scipy import stats
 N = 1000000
 
 # 生成するヒストグラムの個数
-HISTOGRAM_COUNT = 3000
+HISTOGRAM_COUNT = 1500
 
 # alphaとbetaの範囲設定
-ALPHA_RANGE = (0.01, 1000.0)
-BETA_RANGE = (0.01, 1000.0)
+ALPHA_RANGE = (0.8, 10.0)
+BETA_RANGE = (0.8, 10.0)
 
 # ヒストグラムのBINS数
 HISTOGRAM_BINS = 1000

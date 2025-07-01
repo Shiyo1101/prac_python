@@ -6,10 +6,10 @@ from keras.api.models import load_model
 from scipy import stats
 
 # モデルの読み込み
-model = load_model("models/data-analytics/beta_model.keras")
+model = load_model("models/data-analytics/beta_model_v2.keras")
 
 # テストデータの設定
-a, b = 2, 3
+a, b = 5, 3
 x = np.linspace(0, 1, 1000)
 y = stats.beta.pdf(x, a, b)
 

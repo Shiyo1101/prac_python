@@ -2,8 +2,8 @@ import csv
 
 import matplotlib.pyplot as plt
 import numpy as np
-from keras.api.callbacks import ReduceLROnPlateau
-from keras.api.layers import Dense, Input
+from keras.api.callbacks import EarlyStopping, ReduceLROnPlateau
+from keras.api.layers import BatchNormalization, Dense, Dropout, Input
 from keras.api.metrics import RootMeanSquaredError
 from keras.api.models import Model
 from keras.api.optimizers import Adam
@@ -36,10 +36,20 @@ X_train, y_train = load_data("dataset/beta/train_histogram.csv")
 X_val, y_val = load_data("dataset/beta/val_histogram.csv")
 
 input_layer = Input(shape=(X_train.shape[1],), name="input_layer")
+x = BatchNormalization()(input_layer)  # 入力層の直後に追加
 
-x = Dense(256, activation="relu", name="hidden_layer_1")(input_layer)
+x = Dense(256, activation="relu", name="hidden_layer_1")(x)
+x = BatchNormalization()(x)
+x = Dropout(0.3)(x)  # ドロップアウト率を0.2〜0.5で調整
+
 x = Dense(64, activation="relu", name="hidden_layer_2")(x)
+x = BatchNormalization()(x)
+x = Dropout(0.3)(x)
+
 x = Dense(16, activation="relu", name="hidden_layer_3")(x)
+x = BatchNormalization()(x)
+x = Dropout(0.3)(x)
+
 x = Dense(4, activation="relu", name="hidden_layer_4")(x)
 output_layer = Dense(LABEL_COUNT, activation="linear", name="output_layer")(x)
 
@@ -56,6 +66,13 @@ model.compile(
 # 学習率の減衰を設定
 reduce_lr = ReduceLROnPlateau(
     monitor="val_rmse", factor=0.5, patience=10, min_lr=1e-6, verbose=1
+)
+
+early_stopping = EarlyStopping(
+    monitor="val_rmse",  # 監視する指標
+    patience=25,  # 25エポック改善が見られなければ停止
+    restore_best_weights=True,  # 最も性能が良かった重みに戻す
+    verbose=1,
 )
 
 # モデルの学習
